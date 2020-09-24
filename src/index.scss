@@ -1,0 +1,373 @@
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  src: url("./fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SF Compact Display";
+  src: url("./fonts/SF-Compact-Display-Regular.otf") format("truetype");
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #e5e5e5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  transition: all 0.3s ease-out;
+}
+
+.wrapper {
+  position: relative;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  margin: 0 auto;
+  width: 374px;
+}
+
+h1 {
+  font-family: "Roboto Medium", sans-serif;
+  font-size: 47px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+p {
+  font-family: "Roboto Regular", sans-serif;
+  text-align: center;
+  margin-top: 0;
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 90px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  background-color: #e5e5e5;
+  border: 0;
+  border-bottom: 1px solid #dedede;
+  color: #000000;
+  font-size: 15px;
+  box-shadow: none;
+  font-family: "SF Compact Display", sans-serif;
+  padding: 8px 0;
+  margin-bottom: 27px;
+  outline: #939292;
+  transition: all 0.2s;
+
+  & .invalid {
+    border-color: #d00000;
+  }
+}
+
+.form-input {
+  width: 100%;
+  background: none;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--invalid {
+    border-color: #d00000;
+    color: #d00000 !important;
+
+    &:focus {
+      border-color: #d00000;
+    }
+
+    &:hover {
+      border-color: #d00000;
+    }
+  }
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-placeholder {
+  font-size: 15px;
+  font-family: "SF Compact Display", sans-serif;
+  color: #939292;
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 17px;
+  line-height: 1em;
+  margin-top: -0.5em;
+  color: #777;
+  transition: all 0.2s ease;
+}
+
+.form-input:not([value=""]) + .input-placeholder,
+.form-input:focus + .input-placeholder {
+  font-size: 0.8em;
+  top: -13px;
+  margin-top: 0.1em;
+}
+
+input:hover,
+input:focus {
+  border-color: #1c1c1c;
+  color: #1c1c1c;
+}
+
+input:last-child {
+  margin-bottom: 15px;
+}
+
+input::placeholder {
+  color: #939292;
+}
+
+.input-error-message {
+  display: block;
+  transition: all 0.3s ease-out;
+  color: #d00000;
+  margin: 0;
+  letter-spacing: -0.9px;
+  font-size: 12px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+
+  &--email {
+    display: none;
+  }
+}
+
+.checkbox-container {
+  transition: all 0.3s ease-out;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  padding-left: 32px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: "SF Compact Display", sans-serif;
+  color: #000000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: 14px;
+  letter-spacing: 0.05px;
+  margin-bottom: 34px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  transition: all 0.3s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #e5e5e5;
+  border: 1px solid #dedede;
+
+  &.input-error-message {
+    color: #d00000;
+  }
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  & .input-error-message {
+    background-color: #d00000;
+  }
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #e5e5e5;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 3px;
+  top: 3px;
+  width: 6px;
+  height: 6px;
+  border: solid #000;
+  background-color: #000;
+}
+
+.form-input--invalid .checkmark {
+  transition: all 0.3s ease-out;
+  border-color: #d00000;
+  color: #d00000;
+}
+
+button.form-button {
+  font-family: "SF Compact Display", sans-serif;
+  background-color: #dedede;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 17px;
+  line-height: 20px;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 30px;
+  transition: all 0.2s;
+}
+
+button.form-button:hover {
+  background-color: #939292;
+}
+
+button.form-button:active {
+  opacity: 0.6;
+}
+
+.link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-text {
+  font-family: "SF Compact Display", sans-serif;
+  color: #939292;
+  margin-bottom: 0;
+  font-size: 17px;
+  margin-right: 10px;
+}
+
+.form-link {
+  font-family: "SF Compact Display", sans-serif;
+  text-decoration: none;
+  color: #000000;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.form-link:hover {
+  color: #939292;
+}
+
+.form-link:active {
+  opacity: 0.6;
+}
+
+.show-password-container {
+  position: relative;
+}
+
+.show-password-container input {
+  width: 100%;
+}
+
+.show-password-button {
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  top: 9px;
+  width: 20px;
+  height: 20px;
+  /* background-color: #d00000; */
+  background-image: url("./img/show-password.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.show-password-button:hover {
+  transform: scale(1.05);
+}
+
+.show-password-button:active {
+  transition: all 0.3s ease-out;
+  transform: scale(0.95);
+}
+
+.message-screen {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e5e5;
+  z-index: 10;
+
+  &__img {
+    background-image: url("./img/success-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+  }
+
+  & p {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 129px;
+  }
+}
+
+.message-screen-animation {
+  &-enter {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  &-enter-active {
+    transition: opacity 0.3s ease-out;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &-exit-active {
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+    transform: scale(0);
+  }
+}
